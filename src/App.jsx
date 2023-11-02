@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import DessertsList from "./components/DessertsList";
 import { Route, Routes, Link } from "react-router-dom";
-
+import Form from "./components/Form";
 
 const desserts = [
   {
@@ -31,16 +31,25 @@ function App() {
   return (
     <>
       <nav className="navbar">
-        <Link to="/desserts" className="nav-item">
+      <Link to="/desserts" className="nav-item">
           Cards
+        </Link>
+        <Link to="/form" className="nav-item">
+          Form
         </Link>
       </nav>
 
       <Routes>
-        <Route
+      <Route
           path="/desserts"
           element={
             <DessertsList desserts={desserts} />
+          }
+        />
+        <Route
+          path="/form"
+          element={
+            <Form />
           }
         />
       </Routes>
