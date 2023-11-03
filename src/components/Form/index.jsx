@@ -26,7 +26,7 @@ export default function Form() {
     setEmail("");
     setLastname("");
     setFirstname("");
-    setPassword({... password, value:''});
+    setPassword({... password, value:'', isTouched: false});
   };
   const handleSubmit = (e) => {
     e.preventDefault();
