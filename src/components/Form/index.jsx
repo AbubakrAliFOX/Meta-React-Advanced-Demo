@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./style.css";
 
 import PasswordMsg from "../PasswordMsg";
+import {validateEmail} from '../utlis';
 
 export default function Form() {
   const [password, setPassword] = useState("");
@@ -11,9 +12,23 @@ export default function Form() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const handleBlur = (e) => {
-    console.log(e.target.value);
-    setTogglePasswordMsg(!togglePasswordMsg);
+    if (e.target.value.length < 8) {
+        console.log(e.target.value);
+        setTogglePasswordMsg(old => !old);
+    }
   }
+  const getIsFormValid = () => {
+    if (role == 'individual' || role == 'business') {
+        if(password.length > 8) {
+            if(firstname) {
+                if(validateEmail(email)) {
+                    return true;
+                }
+            }
+        }
+    }
+  }
+  
   return (
     <>
       <div className="App">
@@ -47,6 +62,9 @@ export default function Form() {
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onBlur={(e) => {
+                    console.log(validateEmail(e.target.value));
+                }}
                 id="email"
                 placeholder="Email address"
               />
@@ -58,7 +76,7 @@ export default function Form() {
               <input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onBlur={e => e.target.value.length > 8? null: () => handleBlur}
+                onBlur={handleBlur}
                 id="password"
                 placeholder="Password"
               />
@@ -78,10 +96,9 @@ export default function Form() {
                 <option value="business">Business</option>
               </select>
             </div>
-            <button type="submit">
+            <button disabled={!getIsFormValid()} type="submit">
               Create account
             </button>
-            {/* {disabled={!getIsFormValid()}} */}
           </fieldset>
         </form>
       </div>
