@@ -28,11 +28,14 @@ export default function Form() {
         }
     }
   }
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    clearForm();
+  }
   return (
     <>
       <div className="App">
-        <form>
+        <form onSubmit={handleSubmit}>
           <fieldset>
             <h2>Sign Up</h2>
             <div className="Field">
