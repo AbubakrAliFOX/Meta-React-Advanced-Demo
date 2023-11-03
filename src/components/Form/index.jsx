@@ -10,7 +10,7 @@ export default function Form() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("role");
   const handleBlur = (e) => {
     if (e.target.value.length < 8) {
         console.log(e.target.value);
@@ -27,6 +27,14 @@ export default function Form() {
             }
         }
     }
+  }
+  const clearForm = () => {
+    setRole('role');
+    setEmail('');
+    setLastname('');
+    setFirstname('');
+    setPassword('');
+
   }
   const handleSubmit = (e) => {
     e.preventDefault();
