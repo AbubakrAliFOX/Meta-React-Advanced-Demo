@@ -2,44 +2,36 @@ import { useState } from "react";
 import "./style.css";
 
 import PasswordMsg from "../PasswordMsg";
-import {validateEmail} from '../utlis';
+import { validateEmail } from "../utlis";
 
 export default function Form() {
-  const [password, setPassword] = useState("");
-  const [togglePasswordMsg, setTogglePasswordMsg] = useState(false);
+  const [password, setPassword] = useState({value: '', isTouched: false});
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("role");
   const handleBlur = (e) => {
     if (e.target.value.length < 8) {
-        console.log(e.target.value);
-        setTogglePasswordMsg(old => !old);
+      console.log(e.target.value);
+      setTogglePasswordMsg((old) => !old);
     }
-  }
+  };
   const getIsFormValid = () => {
-    if (role == 'individual' || role == 'business') {
-        if(password.length > 8) {
-            if(firstname) {
-                if(validateEmail(email)) {
-                    return true;
-                }
-            }
-        }
-    }
-  }
+    return (
+      role != "role" && password.value.length > 8 && firstname && validateEmail(email)
+    );
+  };
   const clearForm = () => {
-    setRole('role');
-    setEmail('');
-    setLastname('');
-    setFirstname('');
-    setPassword('');
-
-  }
+    setRole("role");
+    setEmail("");
+    setLastname("");
+    setFirstname("");
+    setPassword({... password, value:''});
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     clearForm();
-  }
+  };
   return (
     <>
       <div className="App">
@@ -74,7 +66,7 @@ export default function Form() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onBlur={(e) => {
-                    console.log(validateEmail(e.target.value));
+                  console.log(validateEmail(e.target.value));
                 }}
                 id="email"
                 placeholder="Email address"
@@ -85,13 +77,15 @@ export default function Form() {
                 Password <sup>*</sup>
               </label>
               <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                onBlur={handleBlur}
+                value={password.value}
+                onChange={(e) => setPassword({...password, value: e.target.value})}
+                onBlur={() => setPassword({...password, isTouched: true})}
                 id="password"
                 placeholder="Password"
               />
-              {togglePasswordMsg && <PasswordMsg />}
+              {password.isTouched && password.value.length < 8 ? (
+                <PasswordMsg />
+              ) : null}
             </div>
             <div className="Field">
               <label htmlFor="role">
