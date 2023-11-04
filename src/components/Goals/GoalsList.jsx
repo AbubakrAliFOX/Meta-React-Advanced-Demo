@@ -1,7 +1,7 @@
-export default function GoalsList({ goals }) {
+export default function GoalsList({ allGoals }) {
   return (
     <ul>
-      {goals.map((currentGoal) => (
+      {allGoals.map((currentGoal) => (
         <li>
           {currentGoal.goal}, by {currentGoal.by}
         </li>
