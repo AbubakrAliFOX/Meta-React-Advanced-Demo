@@ -4,6 +4,7 @@ import DessertsList from "./components/DessertsList";
 import { Route, Routes, Link } from "react-router-dom";
 import Form from "./components/Form";
 import MainApp from "./components/Context/App";
+import UseStateRevision from "./components/UseStateRevision/index.jsx";
 
 const desserts = [
   {
@@ -32,7 +33,7 @@ function App() {
   return (
     <>
       <nav className="navbar">
-      <Link to="/desserts" className="nav-item">
+        <Link to="/desserts" className="nav-item">
           Cards
         </Link>
         <Link to="/form" className="nav-item">
@@ -41,27 +42,19 @@ function App() {
         <Link to="/context" className="nav-item">
           Context
         </Link>
+        <Link to="/useStateRevision" className="nav-item">
+          UseStateRevision
+        </Link>
       </nav>
 
       <Routes>
-      <Route
+        <Route
           path="/desserts"
-          element={
-            <DessertsList desserts={desserts} />
-          }
+          element={<DessertsList desserts={desserts} />}
         />
-        <Route
-          path="/form"
-          element={
-            <Form />
-          }
-        />
-        <Route
-          path="/context"
-          element={
-            <MainApp />
-          }
-        />
+        <Route path="/form" element={<Form />} />
+        <Route path="/context" element={<MainApp />} />
+        <Route path="/useStateRevision" element={<UseStateRevision />} />
       </Routes>
     </>
   );
