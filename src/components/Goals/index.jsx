@@ -7,16 +7,17 @@ export default function Goals() {
     e.preventDefault();
   };
   const handleChange = (e) => {
+    console.log(e.target.name);
     setFormData(prevData => {
-        return {...prevData, [e.target.name]: [e.target.value]}
+        return {...prevData, [e.target.name]: e.target.value}
     })
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} value={formData.goal} type="text" />
-        <input onChange={handleChange} value={formData.by} type="text" />
+        <input name="goal" value={formData.goal} onChange={handleChange} type="text" />
+        <input name="by" value={formData.by} onChange={handleChange} type="text" />
         <button type="submit">Add Goal</button>
       </form>
       {/* <GoalsList /> */}
