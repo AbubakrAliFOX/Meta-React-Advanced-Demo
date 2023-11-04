@@ -6,14 +6,15 @@ export default function Goals() {
   const [formData, setFormData] = useState({ goal: "", by: "" });
   const handleSubmit = (e) => {
     e.preventDefault();
-    setAllGoals(prevGoals => {
-        return [...prevGoals, {goal: e.target[0].value, by: e.target[1].value}]
-    })
-    console.log(allGoals);
+    setAllGoals((prevGoals) => {
+      return [...prevGoals, { goal: e.target[0].value, by: e.target[1].value }];
+    });
+    clearFrom();
   };
-
+const clearFrom = () => {
+    setFormData({ goal: "", by: "" });
+}
   const handleChange = (e) => {
-    console.log(e.target.name);
     setFormData((prevData) => {
       return { ...prevData, [e.target.name]: e.target.value };
     });
@@ -39,5 +40,4 @@ export default function Goals() {
       <GoalsList allGoals={allGoals} />
     </div>
   );
-
 }
