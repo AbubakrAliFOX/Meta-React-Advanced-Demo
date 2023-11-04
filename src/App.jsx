@@ -3,6 +3,7 @@ import "./App.css";
 import DessertsList from "./components/DessertsList";
 import { Route, Routes, Link } from "react-router-dom";
 import Form from "./components/Form";
+import MainApp from "./components/Context/App";
 
 const desserts = [
   {
@@ -37,6 +38,9 @@ function App() {
         <Link to="/form" className="nav-item">
           Form
         </Link>
+        <Link to="/context" className="nav-item">
+          Context
+        </Link>
       </nav>
 
       <Routes>
@@ -50,6 +54,12 @@ function App() {
           path="/form"
           element={
             <Form />
+          }
+        />
+        <Route
+          path="/context"
+          element={
+            <MainApp />
           }
         />
       </Routes>
