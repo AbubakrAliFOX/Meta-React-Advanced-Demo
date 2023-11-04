@@ -5,7 +5,9 @@ export default function App() {
   console.log(greeting, setGreeting); 
  
   function updateGreeting() { 
-    setGreeting({ greet: "Hello, World-Wide Web" }); 
+    const newGreeting = {...greeting}; 
+    newGreeting.greet = "Hello, World-Wide Web"; 
+    setGreeting(newGreeting); 
   } 
  
   return ( 
