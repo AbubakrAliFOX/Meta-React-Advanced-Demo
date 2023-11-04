@@ -5,6 +5,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import Form from "./components/Form";
 import MainApp from "./components/Context/App";
 import UseStateRevision from "./components/UseStateRevision/index.jsx";
+import Goals from "./components/Goals";
 
 const desserts = [
   {
@@ -45,6 +46,9 @@ function App() {
         <Link to="/useStateRevision" className="nav-item">
           UseStateRevision
         </Link>
+        <Link to="/goals" className="nav-item">
+          Goals
+        </Link>
       </nav>
 
       <Routes>
@@ -55,6 +59,7 @@ function App() {
         <Route path="/form" element={<Form />} />
         <Route path="/context" element={<MainApp />} />
         <Route path="/useStateRevision" element={<UseStateRevision />} />
+        <Route path="/goals" element={<Goals />} />
       </Routes>
     </>
   );
