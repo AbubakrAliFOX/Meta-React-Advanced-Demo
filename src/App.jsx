@@ -8,6 +8,7 @@ import UseStateRevision from "./components/UseStateRevision/index.jsx";
 import Goals from "./components/Goals";
 import GiftCard from "./components/GiftCard";
 import Loading from "./components/UseEffect";
+import Days from "./components/Days";
 
 const desserts = [
   {
@@ -57,6 +58,9 @@ function App() {
         <Link to="/loading" className="nav-item">
           Loading
         </Link>
+        <Link to="/days" className="nav-item">
+          Days
+        </Link>
       </nav>
 
       <Routes>
@@ -70,6 +74,7 @@ function App() {
         <Route path="/goals" element={<Goals />} />
         <Route path="/giftCard" element={<GiftCard />} />
         <Route path="/loading" element={<Loading />} />
+        <Route path="/days" element={<Days />} />
       </Routes>
     </>
   );
