@@ -6,6 +6,8 @@ import Form from "./components/Form";
 import MainApp from "./components/Context/App";
 import UseStateRevision from "./components/UseStateRevision/index.jsx";
 import Goals from "./components/Goals";
+import GiftCard from "./components/GiftCard";
+import Loading from "./components/UseEffect";
 
 const desserts = [
   {
@@ -49,6 +51,12 @@ function App() {
         <Link to="/goals" className="nav-item">
           Goals
         </Link>
+        <Link to="/giftCard" className="nav-item">
+          GiftCard
+        </Link>
+        <Link to="/loading" className="nav-item">
+          Loading
+        </Link>
       </nav>
 
       <Routes>
@@ -60,6 +68,8 @@ function App() {
         <Route path="/context" element={<MainApp />} />
         <Route path="/useStateRevision" element={<UseStateRevision />} />
         <Route path="/goals" element={<Goals />} />
+        <Route path="/giftCard" element={<GiftCard />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
     </>
   );
