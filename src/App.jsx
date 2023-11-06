@@ -9,6 +9,7 @@ import Goals from "./components/Goals";
 import GiftCard from "./components/GiftCard";
 import Loading from "./components/UseEffect";
 import Days from "./components/Days";
+import ContextTut from "./components/ContextTut";
 
 const desserts = [
   {
@@ -61,6 +62,9 @@ function App() {
         <Link to="/days" className="nav-item">
           Days
         </Link>
+        <Link to="/contextTut" className="nav-item">
+          ContextTut
+        </Link>
       </nav>
 
       <Routes>
@@ -75,6 +79,7 @@ function App() {
         <Route path="/giftCard" element={<GiftCard />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/days" element={<Days />} />
+        <Route path="/contextTut" element={<ContextTut />} />
       </Routes>
     </>
   );
