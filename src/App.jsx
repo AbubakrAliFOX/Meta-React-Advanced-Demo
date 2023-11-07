@@ -11,6 +11,7 @@ import Loading from "./components/UseEffect";
 import Days from "./components/Days";
 import ContextTut from "./components/ContextTut";
 import RadioButtons from "./components/RadioButtons";
+import MousePosition from "./components/MousePosition";
 
 const desserts = [
   {
@@ -69,6 +70,9 @@ function App() {
         <Link to="/radioButtons" className="nav-item">
           RadioButtons
         </Link>
+        <Link to="/mousePosition" className="nav-item">
+          MousePosition
+        </Link>
       </nav>
 
       <Routes>
@@ -85,6 +89,7 @@ function App() {
         <Route path="/days" element={<Days />} />
         <Route path="/contextTut" element={<ContextTut />} />
         <Route path="/radioButtons" element={<RadioButtons />} />
+        <Route path="/mousePosition" element={<MousePosition />} />
       </Routes>
     </>
   );
